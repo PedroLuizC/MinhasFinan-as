@@ -24,9 +24,33 @@ export class Tab2Page implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.calcularTotalExtrato();
     this.loadAvatars();
   }
+
+  getSituacao(): string {
+    const diferenca = this.saldo - this.calcularTotalExtrato();
+
+    if (diferenca >= this.saldo * 0.5) {
+      return 'tranquilo';
+    } else if (diferenca === 0) {
+      return 'cuidado';
+    } else {
+      return 'grave';
+    }
+  }
+
+  getSituacaoClass(): string {
+    const situacao = this.getSituacao();
+    if (situacao === 'tranquilo') {
+      return 'verde';
+    } else if (situacao === 'cuidado') {
+      return 'amarelo';
+    } else {
+      return 'vermelho';
+    }
+  }
+
 
   loadAvatars() {
     const avatarNames = ['Depositar', 'Pagar', 'Transferir', 'Pedir extrato', 'Salário', 'Guardar'];
@@ -53,7 +77,6 @@ export class Tab2Page implements OnInit {
       this.calcularTotalDespesas();
       break;
       case 'Pedir extrato':
-      this.calcularTotalExtrato();
       this.mostrarExtrato();
       break;
       case 'Transferir':
@@ -71,6 +94,8 @@ export class Tab2Page implements OnInit {
         break;
     }
   }
+
+  
 
   mostrarExtrato() {
     
