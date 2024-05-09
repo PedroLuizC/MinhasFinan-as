@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="content-container">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Login</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card class="ion-card-right">
+    <ion-card-content>
+      <ion-item lines="true">
+        <ion-label position="stacked">CPF:</ion-label>
+        <ion-input type="text" [(ngModel)]="cpf" maxlength="11" placeholder="Ex: 82227955546"></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label position="stacked">Senha: </ion-label>
+        <ion-input type="password" [(ngModel)]="senha" [type]="mostrarSenha ? 'text' : 'password'" maxlength="8" placeholder="Máx. 8 dígitos" counter="true"></ion-input>
+        <ion-button (click)="toggleMostrarSenha()">
+          <ion-icon name="{{ mostrarSenha ? 'eye-off-outline' : 'eye-outline' }}"></ion-icon>
+        </ion-button>
+      </ion-item>
+      
+      <ion-button (click)="login(cpf,senha)">Entrar</ion-button>
+
+    </ion-card-content>
+
+    <ion-text class="cadastre-se">
+      Não possui uma conta? <a href="/tabs/tab5">Cadastre-se</a>
+    </ion-text>
+  </ion-card>
+
+  <!-- Imagem de fundo -->
+  <ion-img alt="imagem decorativa" src="../../assets/icon/paginaInicial.jpg" class="background-image"></ion-img>
+</ion-content>

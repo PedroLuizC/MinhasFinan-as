@@ -1,0 +1,50 @@
+.content-container {
+    position: relative;
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Para garantir que a imagem cubra toda a tela */
+}
+
+
+.ion-card-right {
+    position: absolute;
+    top: 50%; /* Posiciona o card no centro verticalmente */
+    right: 20px; /* Distância da borda direita */
+    transform: translateY(-60%); /* Move o card para cima metade da sua altura para que fique centralizado verticalmente */
+    width: 400px; /* Largura do card */
+    background-color: #fff; /* Cor de fundo branca */
+}
+
+/* Estilos para o botão dentro do ion-card */
+ion-card ion-button {
+    --background: #3880ff; /* Cor de fundo do botão */
+    --color: #fff; /* Cor do texto do botão */
+    --border-radius: 10px; /* Raio das bordas do botão */
+    --padding-start: 20px; /* Espaçamento à esquerda do botão */
+    --padding-end: 20px; /* Espaçamento à direita do botão */
+}
+
+/* Alinha o conteúdo do ion-card à direita */
+ion-card ion-card-content {
+    text-align: right;
+}
+
+ion-card ion-item ion-input {
+    color: #000000; /* Cor do texto branco */
+}
+
+/* Estilos para os ion-items dentro do ion-card */
+ion-card ion-item {
+    --background: #fff; /* Cor de fundo branco */
+    --color: #000; /* Cor do texto preto */
+}
+
+.cadastre-se {
+    display: block;
+    text-align: center; /* Alinha o texto ao centro */
+    margin-top: 20px; /* Espaço acima da frase */
+    color: #333; /* Cor do texto */
+}

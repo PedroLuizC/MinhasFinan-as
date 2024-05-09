@@ -1,17 +1,147 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+      <ion-label>
+        <h2 class="title">Bem vindo, Pedro Luiz Cavalcante</h2>
+        <a href="../tab4/"><p>Sair</p></a>
+      </ion-label>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="content">
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-card class="ion-card-white">
+    <ion-card-header>
+      <ion-card-subtitle>Saldo disponível:</ion-card-subtitle>
+      <ion-card-title>R$ {{ saldo.toFixed(2) }}</ion-card-title>
+      <ion-card-subtitle>Sua situação:</ion-card-subtitle>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ng-container *ngFor="let avatar of avatars">
+            <ion-col size="small">
+              <ion-button fill="clear" (click)="avatarClick(avatar)">
+                <ion-avatar>
+                  <img [src]="'assets/avatar/' + avatar.imgUrl" alt="Avatar Image">
+                </ion-avatar>
+                <div>{{ avatar.nome }}</div>
+              </ion-button>
+            </ion-col>
+          </ng-container>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+    
+  </ion-card>
+  
+  <ion-card class="ion-card-white custom-ion-card">
+    <ion-card-header>
+      <ion-card-title class="ion-text-center"> Despesas Fixas</ion-card-title>
+      <div>
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button size="small" (click)="presentAlert('Despesas Fixas')">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+      </div>
+    </ion-card-header>
+  
+    <ion-content [scrollEvents]="true">
+     
+      <ion-list>
+        <ion-item *ngFor="let despesa of despesasFixas" [ngClass]="{'pago': despesa.pago}">
+          <ion-label>
+             <a href="'https://nubank.com.br/'"> <!-- Use o routerLink adequado -->
+            <ion-icon name="barcode-outline" size="medium" slot="start"></ion-icon>
+          </a>
+          </ion-label>
+          <ion-label>{{ despesa.nome }}</ion-label>
+          <ion-label>R$ {{ despesa.valor }}</ion-label>
+          <ion-label>Data: {{ despesa.data }}</ion-label>
+          <ion-button fill="clear" color="danger" (click)="removerDespesa(despesa)">
+            <ion-icon name="close"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+
+    </ion-content>
+
+  </ion-card>
+
+<ion-card class="ion-card-white custom-ion-card">
+  <ion-card-header>
+    <ion-card-title class="ion-text-center">Gastos Gerais</ion-card-title>
+    <div>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button size="small" (click)="presentAlert('Gastos Gerais')">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+  </ion-card-header>
+
+  <ion-content [scrollEvents]="true">
+   
+      <ion-list>
+        <ion-item *ngFor="let gasto of gastosGerais" [ngClass]="{'pago': gasto.pago}">
+          <ion-label>
+            <a href="https://nubank.com.br/"> 
+            <ion-icon name="barcode-outline" slot="start"></ion-icon>
+           </a>
+          </ion-label>
+          <ion-label>{{ gasto.nome }}</ion-label>
+          <ion-label>R$ {{ gasto.valor }}</ion-label>
+          <ion-label>Data: {{ gasto.data }}</ion-label>
+          <ion-button fill="clear" color="danger" (click)="removerGasto(gasto)">
+            <ion-icon name="close"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+
+  </ion-content>
+
+</ion-card>
+
+<ion-modal [showBackdrop]="true" [animated]="true" [isOpen]="mostrarModal" (dismiss)="fecharExtrato()">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="fecharExtrato()">Fechar</ion-button>
+        </ion-buttons>
+        <ion-title>Informe de Rendimento</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-list>
+        <ion-item *ngFor="let despesa of despesasFixas">
+          <ion-label>{{ despesa.nome }}</ion-label>
+          <ion-label slot="end">R$ {{ despesa.valor }}</ion-label>
+        </ion-item>
+        <ion-item *ngFor="let gasto of gastosGerais">
+          <ion-label>{{ gasto.nome }}</ion-label>
+          <ion-label slot="end">R$ {{ gasto.valor }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Total</ion-label>
+          <ion-label slot="end">R$ {{ calcularTotalExtrato().toFixed(2) }} </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+
 </ion-content>
+
+
+
+
+
+

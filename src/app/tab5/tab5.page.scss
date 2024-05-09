@@ -1,0 +1,29 @@
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Para garantir que a imagem cubra toda a tela */
+}
+
+ion-content {
+    --background: #ffffff; /* Define o fundo branco */
+    height: 100vh; /* Define a altura da tela como 100% da altura do viewport */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+  }
+  
+ion-card {
+    max-width: 400px; /* Define a largura máxima do ion-card */
+    width: 90%; /* Define a largura do ion-card */
+    position: absolute; /* Define a posição como absoluta */
+    top: 50%; /* Move o elemento para baixo em 50% da altura do viewport */
+    left: 50%; /* Move o elemento para a direita em 50% da largura do viewport */
+    transform: translate(-50%, -50%); /* Corrige o posicionamento para que o elemento fique centralizado */
+  }
+    
+ion-button {
+    display: block;
+    margin: auto; /* Centraliza o botão de cadastro */
+    margin-top: 20px; /* Define uma margem superior para separar do ion-input */
+  }
+  
