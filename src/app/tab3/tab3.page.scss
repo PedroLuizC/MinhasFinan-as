@@ -11,6 +11,17 @@
     margin-bottom: 20px; /* Adiciona espaçamento entre os cartões */
   }
 
+  ion-card-header ion-card-title {
+    color: gray;
+    font-weight: bold; /* Destaca o texto */
+  }
+  
+  ion-card-header ion-card-subtitle {
+    color: gray;
+    font-weight: bold;
+  }
+  
+
   .card1 {
     background-image: url('../../assets/img_financa/economizar.jpg');
     background-size: cover; /* A imagem irá cobrir todo o espaço do cartão */
