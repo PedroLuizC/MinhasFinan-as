@@ -1,11 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-item lines="none">
-      <ion-avatar slot="start">
-        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      <ion-avatar slot="start" *ngIf="selectedImage">
+        <img [src]="selectedImage ? getObjectURL(selectedImage) : null" alt="Selected Image">
       </ion-avatar>
       <ion-label>
-        <h2 class="title">Bem vindo, Pedro Luiz Cavalcante</h2>
+        <h2 class="title">Bem vindo, {{ nomeDaConta }}</h2>
         <a href="../tab4/"><p>Sair</p></a>
       </ion-label>
     </ion-item>
@@ -136,7 +136,6 @@
     </ion-content>
   </ng-template>
 </ion-modal>
-
 
 </ion-content>
 

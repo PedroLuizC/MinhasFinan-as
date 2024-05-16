@@ -8,6 +8,7 @@ import { ContaService } from '../services/conta.service';
   styleUrls: ['./tab5.page.scss'],
 })
 export class Tab5Page {
+  nome: string = '';
   cpf: string = '';
   senha: string = '';
   mostrarSenha: boolean = false;
@@ -15,8 +16,8 @@ export class Tab5Page {
 
   constructor(private toastController: ToastController, private contaService: ContaService) {}
   
-  cadastrar(cpf: string, senha: string) {
-    this.contaService.cadastrar(cpf, senha);
+  cadastrar(nome: string, cpf: string, senha: string) {
+    this.contaService.cadastrar(nome, cpf, senha);
   }
 
   async mostrarToast(mensagem: string) {

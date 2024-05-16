@@ -6,12 +6,51 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="content">
   <ion-header collapse="condense">
-    <ion-toolbar>
+    <ion-toolbar >
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <!-- Adicionando ion-list e ion-item -->
+  <ion-list>
+    <ion-item>
+      <ion-icon name="person-circle" slot="start"></ion-icon>
+      <ion-button (click)="openFileSelector()">
+        <ion-label>Adicionar avatar</ion-label>
+      </ion-button>
+      <input type="file" #fileInput style="display: none;" (change)="handleFileInputChange($event)">
+    </ion-item>
+    <ion-item>
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-label position="stacked">Alterar nome da conta</ion-label>
+      <ion-input [(ngModel)]="novoNomeConta" placeholder="Novo nome"></ion-input>
+      <ion-button (click)="alterarNomeConta()">Alterar</ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="card" slot="start"></ion-icon>
+      <ion-label position="stacked">Alterar CPF</ion-label>
+      <ion-input type="text" maxlength="11" [(ngModel)]="novoCPF" placeholder="Novo CPF"></ion-input>
+      <ion-button (click)="alterarCPF()">Alterar</ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="lock-closed" slot="start"></ion-icon>
+      <ion-input type="password" [type]="mostrarSenha ? 'text' : 'password'" maxlength="8" placeholder="Senha atual" [(ngModel)]="senhaAtual"></ion-input>
+      <ion-button (click)="toggleMostrarSenha()">
+        <ion-icon name="{{ mostrarSenha ? 'eye-off-outline' : 'eye-outline' }}"></ion-icon>
+      </ion-button>
+    </ion-item>
+    
+    <ion-item>
+      <ion-icon name="lock-closed" slot="start"></ion-icon>
+      <ion-input type="password" [type]="mostrarSenha ? 'text' : 'password'" maxlength="8" placeholder="Nova senha" [(ngModel)]="novaSenha"></ion-input>
+      <ion-button (click)="toggleMostrarSenha()">
+        <ion-icon name="{{ mostrarSenha ? 'eye-off-outline' : 'eye-outline' }}"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item> <ion-button slot="end" (click)="alterarSenha()">Alterar Senha</ion-button></ion-item>
+  </ion-list>
+  
+
 </ion-content>

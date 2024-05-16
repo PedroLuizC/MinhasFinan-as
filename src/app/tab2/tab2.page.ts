@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { ContaService } from '../../app/services/conta.service';
 
 @Component({
   selector: 'app-tab2',
@@ -18,15 +19,25 @@ export class Tab2Page implements OnInit {
   mostrarModal: boolean = false;
   salarioDia: number = 1;
   dinheiroGuardado: number = 0;
+  selectedImage: File | null = null;
+  nomeDaConta: string = '';
+  
+ 
 
-  constructor(private alertController: AlertController) {
-    
-  }
+  constructor(private alertController: AlertController, public contaService: ContaService) {}
+
 
   ngOnInit() {
+    this.nomeDaConta = this.contaService.contaLogada;
+    this.selectedImage = this.contaService.getSelectedImage();
     this.calcularTotalExtrato();
     this.loadAvatars();
   }
+
+  getObjectURL(file: File): string {
+    return URL.createObjectURL(file);
+  }
+
 
   getSituacao(): string {
     const diferenca = this.saldo - this.calcularTotalExtrato();
@@ -53,11 +64,10 @@ export class Tab2Page implements OnInit {
 
 
   loadAvatars() {
-    const avatarNames = ['Depositar', 'Pagar', 'Transferir', 'Pedir extrato', 'Salário', 'Guardar'];
+    const avatarNames = ['Depositar', 'Pagar', 'Pedir extrato', 'Salário', 'Guardar'];
     const avatarUrls = [
       '../../assets/avatar/cash-outline.svg',
       '../../assets/avatar/barcode-outline.svg',
-      '../../assets/avatar/arrow-up-outline.svg',
       '../../assets/avatar/document-text-outline.svg',
       '../../assets/avatar/wallet-outline.svg',
       '../../assets/avatar/lock-closed-outline.svg'
@@ -475,6 +485,7 @@ export class Tab2Page implements OnInit {
     await alert.present();
   }
 
+  
 
 }
 
