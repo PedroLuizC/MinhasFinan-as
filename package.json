@@ -9,7 +9,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "wdio": "wdio run ./wdio.conf.js"
   },
   "private": true,
   "dependencies": {
@@ -24,7 +25,7 @@
     "@capacitor/android": "6.0.0",
     "@capacitor/app": "6.0.0",
     "@capacitor/camera": "^6.0.0",
-    "@capacitor/core": "6.0.0",
+    "@capacitor/core": "^6.0.0",
     "@capacitor/filesystem": "^6.0.0",
     "@capacitor/haptics": "6.0.0",
     "@capacitor/ios": "6.0.0",
@@ -35,6 +36,7 @@
     "ionicons": "^7.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "wd": "^1.14.0",
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
@@ -47,13 +49,18 @@
     "@angular/cli": "^17.3.7",
     "@angular/compiler-cli": "^17.3.9",
     "@angular/language-service": "^17.3.9",
-    "@capacitor/cli": "6.0.0",
+    "@capacitor/cli": "^6.0.0",
     "@ionic/angular-toolkit": "^11.0.1",
     "@types/bcryptjs": "^2.4.6",
     "@types/jasmine": "~5.1.0",
     "@typescript-eslint/eslint-plugin": "7.9.0",
     "@typescript-eslint/parser": "7.9.0",
-    "cypress": "^13.9.0",
+    "@wdio/cli": "^8.36.1",
+    "@wdio/jasmine-framework": "^8.36.1",
+    "@wdio/local-runner": "^8.36.1",
+    "@wdio/spec-reporter": "^8.36.1",
+    "@wdio/visual-service": "^4.1.2",
+    "appium-webdriverio": "^1.0.4",
     "eslint": "^8.57.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsdoc": "48.2.5",
@@ -66,7 +73,9 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.2.2"
+    "ts-node": "^10.9.2",
+    "typescript": "~5.2.2",
+    "wdio-appium-service": "^0.2.3"
   },
   "description": "An Ionic project"
 }

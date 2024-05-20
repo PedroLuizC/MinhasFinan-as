@@ -32,6 +32,7 @@ describe('Tab2Page', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
 
   describe('calcularTotalExtrato()', () => {
     it('should return correct total of expenses', () => {
